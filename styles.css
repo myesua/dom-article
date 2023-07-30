@@ -22,6 +22,7 @@ body {
   height: 200px;
 }
 .wrapper {
+  margin: auto;
   width: 25rem;
   display: grid;
   gap: 2rem;
