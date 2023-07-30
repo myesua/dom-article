@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample HTML Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="parent">
+        <h1>Sample HTML Document</h1>
+        <div class="wrapper">
+          <div class="navigation" id="navigation">
+            <button class="dom btn" id="dom" data-name="nav-btn">DOM</button>
+            <button class="methods btn" id="methods" data-name="nav-btn">Methods</button>
+            <button class="properties btn" id="properties" data-name="nav-btn">Properties</button>
+          </div>
+          <!--Dynamically add text to div element-->
+          <div class="content" id="content"></div>
+          
+        </div>
+    </div>
+    <script>
+      const navs = document.querySelector('.navigation'); // select parent element
+      const buttonArray = document.getElementsByClassName("btn"); // retrieve all elements matching the specified class name
+      const textElement = document.getElementById("content");
+      navs.addEventListener('click', (e) => { // add an event listener on the parent element
+        if (e.target.nodeName === 'BUTTON') { // only execute if target is a button element
+          Array.from(buttonArray).forEach(btn => { // look through the array of buttons in the parent element
+            // check if the current click is on the button
+            if (btn == e.target) {
+              // add the active class
+              btn.classList.add('active');
+              textElement.innerText = `This is the ${e.target.innerText} button`;
+            } else btn.classList.remove('active'); // otherwise remove the active class
+          });
+        } else return;
+      });
+      
+      // function loadRemoveButton () {
+      //   const arrayOfButtons = document.getElementsByTagName('button');
+      // const lastElement = arrayOfButtons.item(arrayOfButtons.length - 1);
+      // const textElement = document.getElementById("content");
+      //   textElement.innerHTML = `<button class="remove-btn">Remove last button</button>`;
+      //   textElement.children[0].addEventListener("click", () => lastElement.remove())
+      // }
+      // loadRemoveButton()
+      
+      
+      // lastElement.remove();
+    </script>
+  </body>
+</html>
